@@ -1,0 +1,108 @@
+<div class="row journeyTextDiv ">
+    <div class="col-xs-1" style="width: inherit;padding-right: 0px;">
+        <img src="assets/images/[FoodieChallenge]Asset (12).png" class="clog-lg-1"/>
+    </div>
+    <div class="col-xs-1" style="width: inherit;padding-left: 0px;padding-right: 0px">
+        <p class="journeyText_a col-lg-1">Journeys</p>
+    </div>
+    <div class="col-xs-10" style="width: inherit;padding-left: 0px;">
+        <p class="journeyText_b" >/  {{culinary.name}}</p>
+    </div>
+</div>
+<!--<div ng-repeat="f in culinary.foods|limitTo:index">-->
+<div class="task effect1" >
+    <div class="row" style="margin: 5px;">
+        <h3><span class="myBadge">{{culinary.foods[index].id}}</span>{{culinary.foods[index].title}}</h3>
+    </div>
+    <div class="row">
+        <div class="col-xs-6">
+            <img ng-src={{culinary.foods[index].restorents.photos.thumb_img}}
+                 ng-click="ImageClickFunction()" class="img-responsive"/>
+        </div>
+
+        <div class="col-xs-6">
+            <map center="{{culinary.foods[index].restorents.map.center.latitude}}, {{culinary.foods[index].restorents.map.center.longitude}}" zoom="8"></map>
+        </div>
+    </div>
+    <div class="row">
+        <div class="divIntruction col-xs-12">
+            {{instruction}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="divDescription col-xs-9">
+            {{description}}
+            <div>
+                <a href="" class="btn btn-default x-btn-default divSendTextNotification">Resend Text Notification</a>
+            </div>
+        </div>
+        <div class="col-xs-3 divTiming">
+            Today {{culinary.foods[index].restorents.contacts.oprational_hour}}<br/>
+            <p id="open-now">{{culinary.foods[index].restorents.contacts.open_status}}</p>
+            <hr/>
+            <p id="apple-pie">({{culinary.foods[index].restorents.contacts.phone_code}})-{{culinary.foods[index].restorents.contacts.phone_number}}<br/>
+                {{culinary.foods[index].restorents.contacts.website}}</p>
+        </div>
+    </div>
+    <!--</div>-->
+</div>
+<div class="row" style="margin-top: 10px">
+    <div class="col-md-4">
+        <!--<a href="">Previous</a>-->
+        <a id="previous-btn" ng-click="goTopreviousChallengeScreen()" class="btn btn-default x-btn-default previousStyle hidden-xs">Previous</a>
+    </div>
+    <div class="col-md-4">
+        <!--<a href="">Mark As Started</a>-->
+       <!-- <a href="../app/journey/view/JourneyStarted.html" class="btn btn-default x-btn-default markStyle">Mark as Started</a>-->
+        <a ng-click="onProvideReasonClick()" id="Provide-ReasonBtn" data-toggle="modal" data-target="#myModal" class="btn btn-default x-btn-default markStyle middle-button">Provide Reason</a>
+    </div>
+    <div class="col-md-4">
+        <!--<a href="">Next</a>-->
+        <a  id="Send-Next" ng-click="goToNextChallengeScreen()" class="btn btn-default x-btn-default nextStyle hidden-xs">Next</a>
+    </div>
+</div>
+<!-- Modal -->
+    <!-- New Modal -->
+    <div class="modal fade col-xs-11" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div id="header-div">
+                    <div class="row">
+                    <h3 class="modal-title">You Ran out of time!</h3></div>
+                    <div class="row">
+                        <h5>This challenge will appear as missed</h5>
+                          <h5>  Please provide a reason to be able to start again. </h5>
+                    </div>
+
+                    <div  id="modalbodydiv" class="row">
+                        <div id="message-div" class="col-xs-6">
+                            <textarea id="text-area" placeholder="Type your text here..."></textarea>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <button id="doitlater-btn" type="button" class="btn btn-default" data-dismiss="modal">Do it Later</button>
+                        </div>
+                        <div class="col-xs-6">
+                            <button id="send-btn" ng-click="goToSendButton()" type="button" class="btn btn-default" data-dismiss="modal">{{send}}</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    $(function() {
+
+        $('#myModal').on('show.bs.modal', function(){
+            $('body').addClass('blur');
+
+        });
+        $('#myModal').on('hide.bs.modal', function(){
+            $('body').removeClass('blur');
+        });
+
+    });
+</script>

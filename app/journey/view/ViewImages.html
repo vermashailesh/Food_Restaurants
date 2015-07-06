@@ -1,0 +1,16 @@
+
+<div class="row">
+    <div class="col-xs-9">
+        <ul>
+            <li ng-model="filmName" ng-repeat="film in films">
+                <div id="image-divVY">
+                <img ng-src={{film.imageSrc}} class="img-responsive" />
+                </div>
+                <div id="imagename-divVY">
+                {{film.imageName}}
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</div>

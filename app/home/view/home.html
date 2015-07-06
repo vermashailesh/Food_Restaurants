@@ -1,4 +1,9 @@
-
+<script language=" JavaScript" >
+    function LoadOnce()
+    {
+        window.location.reload();
+    }
+</script>
 <div>
     <p class="welcomeText">{{title}}</p>
 </div>
@@ -23,6 +28,6 @@
 
 <div class="row">
 <div ng-repeat="activity in activities" class="col-md-3">
-    <activity-details activity="activity"></activity-details>
+    <activity-details activity="activity" ng-click="sendTo()"></activity-details>
 </div>
 </div>

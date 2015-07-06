@@ -23,9 +23,35 @@ config(['$routeProvider', function($routeProvider) {
           templateUrl:'culinaris/partials/_culinaryJourney.html',
           controller: 'CulinarisController'
       })
+      .when('/culinaris_photos',{
+          templateUrl:'culinaris/partials/_culinaryPhotos.html',
+          controller: 'CulinarisController'
+      })
       .when('/journey',{
           templateUrl: 'journey/view/Journey.html',
           controller: 'JourneyController'
       })
+      .when('/journeynew',{
+          templateUrl: 'journey/view/Journey_Generic.html',
+          controller: 'JourneyController'
+      })
+      .when('/journey/view/',{
+          templateUrl: 'journey/view/JourneyStarted.html',
+          controller: 'JourneyController'
+      })
+      .when('/journey/view/journeycompleted/',{
+          templateUrl: 'journey/view/JourneyCompleted.html',
+          controller: 'JourneyController'
+      })
+      .when('/journey/view/providereason/',{
+          templateUrl: 'journey/view/JourneyReason.html',
+          controller: 'JourneyController'
+      })
+      .when('/viewImages',{
+          templateUrl: 'journey/view/ViewImages.html',
+          controller: 'JourneyController'
+      })
       .otherwise({redirectTo: '/'});
 }]);
+
+

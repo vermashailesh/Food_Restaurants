@@ -1,6 +1,6 @@
 <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container" style="padding: 0px; width: 100%">
+        <div class="container" style="padding: 0px; width: 100%"  >
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -17,24 +17,25 @@
 			    <div ng-if="!user.isLogin" >
 						<ul class="nav navbar-nav navbar-right">
 							<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><div ng-if="!user.isLogin" >Login</div></a>
-							</li>
+                                <a  class="dropdown-toggle" data-toggle="modal" data-target=".bs-example-modal-sm">Login</a>
+                               <!-- <a id="login-href" ng-click='toggleModal()' data-toggle="modal" data-target="#myModal" >Login</a>-->
+                            </li>
 						</ul>
 				</div>
 				<div ng-if="user.isLogin">
 				     <ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-							<a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">hi,{{user.userName}}!</a>
+							<a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Hi,{{user.userName}}!</a>
 						</li>
 						<li class="dropdown">
 							<a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><img class="x-profile-image" ng-src="{{user.profileImage}}"></a>
 						</li>
 						<li class="dropdown x-caret">
 								<a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="caret"></span></a>
-									  <ul class="dropdown-menu" role="menu">
-										<li><a href="#">My Account</a></li>
-										<li><a href="#">Log Out</a></li>
-									  </ul>
+                                  <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">My Account</a></li>
+                                    <li><a ng-click="logout()">Log Out</a></li>
+                                  </ul>
 						</li>
 					</ul>
 				</div>
@@ -62,8 +63,37 @@
                     <h2>Caption 1</h2>
                 </div>
             </div>
-            
-        </div>
 
-      
+        </div>
     </header>
+<!--Modal Implemented Start-->
+<div class="modal fade bs-example-modal-sm modal-custom-position" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content modal-content-custom">
+            <form name="form" class="form-signin" >
+                <div class="col-md-12">
+                    <input name='email' ng-model="email" type="email" placeholder="Email or Username" class="form-control"/></br>
+                </div>
+                <div class="col-md-12">
+                    <input name='password' ng-model="password" type="password" ng-model="password" placeholder="Password" class="form-control"/>
+                </div>
+                <div class="form-actions">
+                    <button ng-click="login()" type="submit" class="btn btn-primary submit" data-dismiss="modal">Login</button>
+                    <p class="custom-pr">or login with</p>
+                    <div class="col-md-12 class socialBtn social-btn-custom">
+                        <a class="btn btn-social btn-twitter">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a class="btn btn-social btn-facebook">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a class="btn btn-social  btn-google-plus">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--Modal Implemented End-->

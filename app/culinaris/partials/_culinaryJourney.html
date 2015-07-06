@@ -12,14 +12,18 @@
        </div>
     <div class="col-md-6 btn-group ">
         <div class="btn-group x-float-right">
-            <a class="btn btn-default x-border-2-redius dropdown-toggle" aria-expanded="false" href="javascript:void(0);" data-toggle="dropdown">
+            <a ng-if="clickedFlag==false" class="btn btn-default x-border-2-redius dropdown-toggle" aria-expanded="false" href="javascript:void(0);" data-toggle="dropdown">
                 Most Recent
                 <span class="caret"></span>
             </a>
+            <a ng-if="clickedFlag==true" class="btn btn-default x-border-2-redius dropdown-toggle" aria-expanded="false" href="javascript:void(0);" data-toggle="dropdown">
+                {{desc}}
+                <span class="caret"></span>
+            </a>
             <ul class="dropdown-menu">
-                <li ><a href="javascript:void(0);" >Most Recent</a></li>
-                <li ><a href="javascript:void(0);" >Highest Rated</a></li>
-                <li ><a href="javascript:void(0);" >Top Reviewed</a></li>
+                <li ng-click="change(0)"><a href="javascript:void(0);" >Most Recent</a></li>
+                <li ng-click="change(1)"><a href="javascript:void(0);" >Highest Rated</a></li>
+                <li ng-click="change(2)"><a href="javascript:void(0);" >Top Reviewed</a></li>
             </ul>
         </div>
     </div>
@@ -38,13 +42,13 @@
               <a  class="btn btn-default x-btn-default ">Duration:{{culinary.duration}}</a>
         </div>
         <div>
-            <a  class="btn btn-default x-btn-default x-btn-orange">Follow</a>
+            <a id="Follow-Btn" ng-click="alterFollowText()" class="btn btn-default x-btn-default x-btn-orange">{{ContinueBtnText}}</a>
         </div>
     </div>
 </div>
 <div class="row x-row-accordian" >
     <div class="col-md-12">
-            <section ng-repeat="f in culinary.foods" id="accordion">
+        <section ng-repeat="f in culinary.foods | orderBy: orderSelect : true" id="accordion">
                 <div>
                     <input type="checkbox" id="{{f.id}}"  ng-click="foodSelect(f.id)"/>
                     <label for="{{f.id}}"><a href="javascript:void(0)" class="x-circle x-number">{{$index + 1}}</a><a href="javascript:void(0)" class="x-circle-x x-number"></a>&nbsp;&nbsp;{{f.title}}</label>
@@ -76,7 +80,7 @@
                             <div class="col-md-3 x-restorent-photo">
 							        <div >
 							          <a href="javascript:void(0)" class="btn btn-link">
-										<img class="x-restorent-img" ng-src="{{f.restorents.photos.thumb_img}}" />
+                                          <img class="x-restorent-img" ng-src="{{f.restorents.photos.thumb_img}}" ng-click="openInNewWindow()" />
 									  </a>
 									</div>
 									<div class="x-phot-inner-text">

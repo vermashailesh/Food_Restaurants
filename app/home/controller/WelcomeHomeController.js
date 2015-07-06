@@ -5,13 +5,16 @@
 
 angular
     .module('foodieJournal.home', [])
-    .controller('WelcomeHomeController',['$scope','activityService',function ($scope,activityService){
+    .controller('WelcomeHomeController',['$scope','activityService','$location',function ($scope,activityService,$location){
 
         $scope.title = 'Welcome! Choose a track to get started.';
 
         activityService.getActivities().then(function(data) {
             $scope.activities = data
         });
+        $scope.sendTo = function(){
+            $location.path('/culinaris');
+        }
     }])
     .factory('activityService',activityFactory)
     .directive('activityDetails', function() {

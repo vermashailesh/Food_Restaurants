@@ -3,28 +3,32 @@
     "name": "American",
     "description": "One characterstic of American cooking is the fusion of multiple ethnic or regional approaches into completely new cooking style",
     "duration": "3 Weeks",
-    "progress" : 10,
-    "imagePath":"assets/images/[FoodieChallenge]Asset (25).png"
+    "progress" : 20,
+    "imagePath":"assets/images/[FoodieChallenge]Asset (25).png",
+    "percentage": "20%"
   },
   {
     "name": "Italian",
     "description": "One characterstic of American cooking is the fusion of multiple ethnic or regional approaches into completely new cooking style",
     "duration": "1 Week",
-    "progress" : 20,
-    "imagePath":"assets/images/[FoodieChallenge]Asset (1).png"
+    "progress" : 40,
+    "imagePath":"assets/images/[FoodieChallenge]Asset (1).png",
+    "percentage": "40%"
   },
   {
     "name": "Mexican",
     "description": "One characterstic of American cooking is the fusion of multiple ethnic or regional approaches into completely new cooking style",
     "duration": "2 Weeks",
     "progress": 70,
-    "imagePath":"assets/images/[FoodieChallenge]Asset (2).png"
+    "imagePath":"assets/images/[FoodieChallenge]Asset (2).png",
+    "percentage": "70%"
   },
   {
     "name": "Japanese",
     "description": "One characterstic of American cooking is the fusion of multiple ethnic or regional approaches into completely new cooking style",
     "duration": "3 Weeks",
     "progress": 0,
-    "imagePath":"assets/images/[FoodieChallenge]Asset (3).png"
+    "imagePath":"assets/images/[FoodieChallenge]Asset (3).png",
+    "percentage": "0%"
   }
 ]

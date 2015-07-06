@@ -46,7 +46,7 @@
 .divSendTextNotification,.divSendTextNotification:hover,.divSendTextNotification:focus{
     padding-top: 20px;
     background-color: #F8F8F8;
-    width: 25%;
+   /* width: 25%;*/
     text-align: center;
     margin: 10px 0 0 0;
     padding-bottom: 20px;

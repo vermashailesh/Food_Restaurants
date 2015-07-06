@@ -17,6 +17,8 @@
     <!-- Custom CSS -->
     <link href="assets/css/modern-business.css" rel="stylesheet">
     <link href="main/CSS/bodyStyle.css" rel="stylesheet">
+    <link href="assets/css/social-buttons.css" rel="stylesheet">
+
     <!-- Custom Fonts -->
     <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -41,7 +43,7 @@
 <div class="x-body-style">
 
     <!--header-->
-    <div ng-controller="PublicController">
+    <div ng-controller="HomeController">
         <div ng-include="'main/header.html'"></div>
 
         <!-- page container -->
@@ -64,9 +66,9 @@
 
         <!-- Footer -->
 
-        <div ng-if="isFooter" >
+       <!-- <div ng-if="isFooter" >
             <div ng-include="'main/footer.html'"></div>
-        </div>
+        </div>-->
     </div>
 
 </div>
@@ -92,6 +94,7 @@
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
+
 
 </body>
 </html>

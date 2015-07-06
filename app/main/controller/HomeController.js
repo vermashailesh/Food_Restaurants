@@ -6,9 +6,21 @@
 var foodieJurnal=angular.module('foodieJournal.main', [
     'ngRoute'
 ]);
-foodieJurnal.controller('HomeController',['$scope',function ($scope){
+foodieJurnal.factory('activityService',activityFactory);
+foodieJurnal.controller('HomeController',['$scope','$http','authenticateService','$location','$window','$rootScope',function ($scope,$http,authenticateService,$location,$window,$rootScope){
+    $scope.userDataa = $window.localStorage.getItem('user');
+    $scope.localStorageUserData = JSON.parse($scope.userDataa);
+
     $scope.title = 'Home Page title';
+    $rootScope.isFooter=false;
     $scope.isFooter=true;
+
+    $scope.modalShown = false;
+    $scope.email="";
+    $scope.password="";
+    $scope.username="";
+    $scope.userdata={};
+
     $scope.rebels
         = [{ challenge: 'Challenge Yourself',
         description1: 'FoodieJournal makes it easy for you to embark',
@@ -26,12 +38,80 @@ foodieJurnal.controller('HomeController',['$scope',function ($scope){
         imageDescription7: 'Complete Challenges and',
         imageDescription8: 'track your progress against',
         imageDescription9: 'your selected cuisine journey',
+        challenge2: 'Revisit Challenge',
+        description10: 'FoodieJournal lets you find sophisticated places',
+        description11: ' and lets you find tasty dishes for your taste '
 
     }
     ];
 
-    console.log($scope.rebels[0].footerImageUrl1);
-    console.log($scope.rebels[0].imageDescription8);
+    //loading Data from local Storage Start
+    if (($scope.localStorageUserData)==undefined || ($scope.localStorageUserData)==null){
+
+        var user={
+            isLogin:false
+        };
+        $scope.user=user;
+        $scope.userLoginCheck=$scope.user.isLogin;
+        console.log("1"+$scope.userLoginCheck);
+
+    }
+    else{
+
+        var user={
+            isLogin:$scope.localStorageUserData.isLogin,
+            userName:$scope.localStorageUserData.userName,
+            profileImage:$scope.localStorageUserData.profileImage
+        };
+        $scope.user=user;
+        console.log("2"+$scope.user.isLogin);
+    }
+    //loading Data from local Storage Start
+
+    $scope.login = function() {
+
+        $scope.email=this.email;
+        $scope.password=this.password;
+        $scope.userdata={};
+        authenticateService.authenticate().then(function(data) {
+            $scope.userdata={};
+            $scope.userdata = data;
+            $scope.userInvalidFlag=true;
+            $scope.userdata.forEach(function(ud){
+                if ($scope.email !== null && $scope.email === ud.username) {
+                    if ($scope.password !== null && $scope.password === ud.password){
+                        var user={
+                            isLogin:true,
+                            userName:ud.name,
+                            profileImage:ud.profilePic
+                        };
+                        $scope.user=user;
+                        console.log("3"+$scope.user.isLogin);
+                        $scope.userInvalidFlag=false;
+                        $window.localStorage.setItem('user', JSON.stringify($scope.user));
+                        $location.path('/welcomehome');
+                    }
+                }
+            });
+            if($scope.userInvalidFlag==true) {
+                    console.log("invalid user");
+                }
+        });
+    }
+    $scope.logout = function()
+    {
+        console.log("logout function called");
+        var user={
+            isLogin:false
+        };
+        $scope.user=user;
+
+        console.log("3"+$scope.user.isLogin);
+        window.localStorage.clear();
+        $location.path('/');
+
+    };
+
 }]);
 foodieJurnal.controller('FooterController',['$scope','$location',function ($scope,$location){
     if($location.path() =="/"){
@@ -47,3 +127,55 @@ foodieJurnal.controller('FooterController',['$scope','$location',function ($scop
     }
     ];
 }]);
+/*factory Method to get the user id and password*/
+foodieJurnal.factory('activityService',activityFactory);
+/!*json data fetch*!/
+function activityFactory($http){
+    this.$inject = ['$http'];
+    return {
+        getuserdata: getuserdata
+    };
+
+    function getuserdata () {
+        debugger;
+        return $http
+            .get('data/users.json')
+            .then(complete)
+            .catch(failed);
+    }
+
+    function complete(response) {
+        debugger;
+        return response.data;
+    }
+
+    function failed(error) {
+        return error.statusText;
+    }
+}
+
+foodieJurnal.service('authenticateService', authenticateService);
+function authenticateService($http){
+    this.$inject = ['$http'];
+    return {
+        authenticate: authenticate
+    };
+
+    function authenticate () {
+        debugger;
+        return $http
+            .get('data/users.json')
+            .then(complete)
+            .catch(failed);
+
+    }
+
+    function complete(response) {
+        debugger;
+        return response.data;
+    }
+
+    function failed(error) {
+        return error.statusText;
+    }
+}

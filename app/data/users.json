@@ -1,0 +1,13 @@
+[
+  {
+    "username":"shailesh@gmail.com","name":"Shailesh", "password":"12345", "profilePic":"assets/images/slices/profileimage.png"
+
+  },
+  {
+    "username":"varsha@gmail.com","name":"Varsha", "password":"12345","profilePic":"assets/images/slices/profileimage.png"
+
+  },
+  {
+    "username":"palak@gmail.com","name":"Palak", "password":"12345","profilePic":"assets/images/slices/profileimage.png"
+  }
+]

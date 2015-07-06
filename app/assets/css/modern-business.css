@@ -9,6 +9,7 @@
 html,
 body {
     height: 100%;
+    width: 100%;
 }
 
 body {
@@ -489,5 +490,83 @@ body {
     width:98%;
 }
 .x-body-style{
-          padding: 2%;
+          padding: 0%;
 }
+
+/*Implementing login bootstrap*/
+/*Implementing login bootstrap*/
+@media screen and (min-width: 768px){
+    .modal-content-custom {
+        width:65%;
+        top: 12px;
+    }
+    .submit{
+        margin-top: 6px;
+        margin-left: 15px;
+        width: 86%;
+        background-color: red;
+    }
+   .social-btn-custom{
+       margin-top: -11px;
+       padding-left: 40px;
+   }
+   .custom-pr {
+       margin: 15px 51px 25px;
+   }
+   .modal-custom-position{
+       left: 79%;
+       padding-right: 15px;
+   }
+
+}
+
+@media screen and (max-width: 500px){
+   .modal-content-custom {
+         top: 48px;
+    }
+    .submit{
+        background-color: red;
+        margin-top: 6px;
+        margin-left: 15px;
+        width: 86%;
+        background-color: red;
+    }
+    .custom-pr {
+        margin: 15px 108px 14px;
+    }
+    .social-btn-custom{
+        margin-top: 0px;
+        padding-left: 83px;
+    }
+    /*.social-btn-custom{
+        margin-top: -11px;
+        padding-left: 40px;
+    }
+    .custom-pr {
+        margin: 15px 51px 25px;
+    }
+    .modal-custom-position{
+        left: 79%;
+        padding-right: 15px;
+    }*/
+
+}
+.form-signin {
+    max-width: 380px;
+    padding: 15px 0px 25px;
+    margin: 0px auto;
+    background-color: #fff;
+    height: 217px;
+    /* border: 1px solid rgba(0, 0, 0, 0.1); */
+}
+.form-control {
+    position: relative;
+    font-size: 12px;
+    height: auto;
+    padding: 3px;
+@include box-sizing(border-box);
+    margin-bottom: 3px;
+}
+
+/*Implementing login bootstrap*/
+/*Implementing login bootstrap*/

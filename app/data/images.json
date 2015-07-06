@@ -1,0 +1,18 @@
+[
+  {
+    "imageName":"burger1",
+    "imageSrc":"assets/images/slices/burger1.png"
+  },
+  {
+    "imageName":"burger2",
+    "imageSrc":"assets/images/slices/burger2.png"
+  },
+  {
+    "imageName":"burger3",
+    "imageSrc":"assets/images/slices/burger3.png"
+  },
+  {
+    "imageName":"burger4",
+    "imageSrc":"assets/images/slices/burger4.png"
+  }
+]
